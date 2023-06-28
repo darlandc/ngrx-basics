@@ -1,8 +1,6 @@
 import {
   ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
+  Component
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -16,7 +14,7 @@ import {
   selector: 'app-counter-controls',
   templateUrl: './counter-controls.component.html',
   styleUrls: ['./counter-controls.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CounterControlsComponent {
   count$!: Observable<number>;
@@ -26,14 +24,26 @@ export class CounterControlsComponent {
   }
 
   increment() {
-    this.store.dispatch(increment());
+    this.store.dispatch(
+      increment({
+        value: 1,
+      })
+    );
   }
 
   decrement() {
-    this.store.dispatch(decrement());
+    this.store.dispatch(
+      decrement({
+        value: 1,
+      })
+    );
   }
 
   reset() {
-    this.store.dispatch(reset());
+    this.store.dispatch(
+      reset({
+        value: 0,
+      })
+    );
   }
 }

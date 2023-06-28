@@ -8,6 +8,8 @@ import { counterReducer } from './store/reducers/counter.reducer';
 import { HomeComponent } from './components/home/home.component';
 import { CounterOutputComponent } from './components/counter-output/counter-output.component';
 import { CounterControlsComponent } from './components/counter-controls/counter-controls.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffects } from './store/effects/counter.effects';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { CounterControlsComponent } from './components/counter-controls/counter-
     AppRoutingModule,
     StoreModule.forRoot({
       counter: counterReducer
-    })
+    }),
+    EffectsModule.forRoot(CounterEffects),
   ],
   providers: [],
   bootstrap: [AppComponent]
